@@ -1,0 +1,46 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodni olish
+        uses: actions/checkout@v4
+
+      - name: Node.js o'rnatish
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Java (Android uchun kerak)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Paketlarni o'rnatish
+        run: |
+          npm install
+          npm install -D @capacitor/cli
+
+      - name: Android platformasini qo'shish
+        run: |
+          npx cap add android
+          npx cap sync
+
+      - name: Debug APK yig'ish
+        run: |
+          cd android
+          chmod +x ./gradlew
+          ./gradlew assembleDebug
+
+      - name: APK'ni saqlash (yuklab olish uchun)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ArcadeHub-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
