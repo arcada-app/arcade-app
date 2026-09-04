@@ -1,10 +1,7 @@
 {
   "appId": "com.arcadehub.games",
   "appName": "ArcadeHub",
-  "webDir": "www",
+  "webDir": ".",
   "bundledWebRuntime": false,
-  "backgroundColor": "#12121a",
-  "android": {
-    "backgroundColor": "#12121a"
-  }
+  "backgroundColor": "#12121a"
 }
