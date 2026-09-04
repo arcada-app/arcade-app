@@ -1,0 +1,17 @@
+{
+  "name": "arcadehub",
+  "version": "1.0.0",
+  "description": "ArcadeHub - bitta ilovada besh o'yin (Snake, 2048, Tetris, Xotira, XOXO)",
+  "scripts": {
+    "sync": "cap sync",
+    "open:android": "cap open android",
+    "run:android": "cap run android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/core": "^6.1.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  }
+}
